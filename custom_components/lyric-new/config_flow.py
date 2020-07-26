@@ -7,6 +7,7 @@ from lyric import Lyric
 
 from homeassistant import config_entries
 from homeassistant.components.http import HomeAssistantView
+from homeassistant.helpers.network import async_get_url
 from homeassistant.config_entries import ConfigFlow
 from .const import (AUTH_CALLBACK_NAME, AUTH_CALLBACK_PATH, DOMAIN,
                     CONF_CLIENT_ID, CONF_CLIENT_SECRET, CONF_LYRIC_CONFIG_FILE,
