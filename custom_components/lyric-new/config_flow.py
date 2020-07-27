@@ -15,7 +15,7 @@ from .const import (AUTH_CALLBACK_NAME, AUTH_CALLBACK_PATH, DOMAIN,
                     
 _LOGGER = logging.getLogger(__name__)
 
-instance_url = get_url(hass)
+instance_url = get_url(self.hass)
 
 @config_entries.HANDLERS.register(DOMAIN)
 class LyricFlowHandler(ConfigFlow):
@@ -57,7 +57,7 @@ class LyricFlowHandler(ConfigFlow):
                 client_id = self.client_id
                 client_secret = self.client_secret
                 redirect_uri = '{}{}'.format(
-                    self.hass.config.api.instance_url, AUTH_CALLBACK_PATH)
+                    self.instance_url, AUTH_CALLBACK_PATH)
                 token_cache_file = self.hass.config.path(
                     CONF_LYRIC_CONFIG_FILE)
 

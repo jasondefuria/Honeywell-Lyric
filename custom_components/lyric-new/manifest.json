@@ -5,6 +5,7 @@
   "documentation": "https://www.home-assistant.io/components/lyric",
   "dependencies": [],
   "codeowners": [
+    "@jasondefuria"
     "@timmo001"
   ],
   "requirements": [
