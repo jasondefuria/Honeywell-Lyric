@@ -15,7 +15,7 @@ from .const import (AUTH_CALLBACK_NAME, AUTH_CALLBACK_PATH, DOMAIN,
                     
 _LOGGER = logging.getLogger(__name__)
 
-instance_url = get_url(self.hass)
+instance_url = get_url(self.hass.config.internal_url)
 
 @config_entries.HANDLERS.register(DOMAIN)
 class LyricFlowHandler(ConfigFlow):
