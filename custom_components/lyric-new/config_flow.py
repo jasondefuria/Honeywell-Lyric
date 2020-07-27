@@ -7,14 +7,15 @@ from lyric import Lyric
 
 from homeassistant import config_entries
 from homeassistant.components.http import HomeAssistantView
-from homeassistant.helpers.network import async_get_url
+from homeassistant.helpers.network import get_url
 from homeassistant.config_entries import ConfigFlow
 from .const import (AUTH_CALLBACK_NAME, AUTH_CALLBACK_PATH, DOMAIN,
                     CONF_CLIENT_ID, CONF_CLIENT_SECRET, CONF_LYRIC_CONFIG_FILE,
                     DATA_LYRIC_CONFIG)
-
+                    
 _LOGGER = logging.getLogger(__name__)
 
+instance_url = get_url(hass)
 
 @config_entries.HANDLERS.register(DOMAIN)
 class LyricFlowHandler(ConfigFlow):
@@ -56,7 +57,7 @@ class LyricFlowHandler(ConfigFlow):
                 client_id = self.client_id
                 client_secret = self.client_secret
                 redirect_uri = '{}{}'.format(
-                    self.async_get_url(hass), AUTH_CALLBACK_PATH)
+                    self.hass.config.api.instance_url, AUTH_CALLBACK_PATH)
                 token_cache_file = self.hass.config.path(
                     CONF_LYRIC_CONFIG_FILE)
 
