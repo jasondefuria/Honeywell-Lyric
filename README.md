@@ -1,5 +1,6 @@
 # Honeywell-Lyric
 Honeywell Lyric for Home Assistant
+
 I take no responsibility for this working or messing up anything with your furnace or thermostats. This is experimental.
 This is an updated, working integration (December 2019), that is based on these two great libraries that unfortunately appear to be abandoned, buggy, and no longer work:
 
