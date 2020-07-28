@@ -57,7 +57,7 @@ class LyricFlowHandler(ConfigFlow):
                 client_id = self.client_id
                 client_secret = self.client_secret
                 redirect_uri = '{}{}'.format(
-                    self.instance_url, AUTH_CALLBACK_PATH)
+                    self.get_url(hass), AUTH_CALLBACK_PATH)
                 token_cache_file = self.hass.config.path(
                     CONF_LYRIC_CONFIG_FILE)
 
