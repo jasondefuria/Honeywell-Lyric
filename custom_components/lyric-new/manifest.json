@@ -2,7 +2,7 @@
   "domain": "lyric",
   "name": "Honeywell Lyric",
   "config_flow": true,
-  "documentation": "https://www.home-assistant.io/components/lyric",
+  "documentation": "https://github.com/jasondefuria/Honeywell-Lyric",
   "dependencies": [],
   "codeowners": [
     "@jasondefuria",
