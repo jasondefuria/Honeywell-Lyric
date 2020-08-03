@@ -90,7 +90,7 @@ class LyricClient:
         self.lyric = lyric
 
         if not lyric.locations:
-            return
+           return await
 
         self._location = [location.name for location in lyric.locations]
 

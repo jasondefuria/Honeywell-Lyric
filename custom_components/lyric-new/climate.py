@@ -220,7 +220,7 @@ class LyricThermostat(LyricDeviceEntity, ClimateDevice):
         else:
             temp = kwargs.get(ATTR_TEMPERATURE)
         _LOGGER.debug("Set temperature: %s", temp)
-        self.device.temperatureSetpoint = temp
+        await self.device.temperatureSetpoint = temp
 
     async def async_set_hvac_mode(self, hvac_mode: str) -> None:
         """Set hvac mode."""
@@ -237,7 +237,7 @@ class LyricThermostat(LyricDeviceEntity, ClimateDevice):
 
     async def _lyric_update(self) -> None:
         """Get values from lyric."""
-        if self.device:
+        await if self.device:
             self._humidity = self.device.indoorHumidity
             self._temperature = self.device.indoorTemperature
             self._mode = self.device.operationMode.upper()
