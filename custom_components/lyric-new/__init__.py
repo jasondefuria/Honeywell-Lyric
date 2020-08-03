@@ -85,11 +85,11 @@ async def async_unload_entry(
 class LyricClient:
     """Structure Lyric functions for hass."""
 
-    def __init__(self, lyric):
+   async def __init__(self, lyric):
         """Init Lyric devices."""
         self.lyric = lyric
 
-        if not lyric.locations:
+        if not await lyric.locations:
             return
 
         self._location = [location.name for location in lyric.locations]
