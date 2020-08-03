@@ -33,13 +33,15 @@ This will give support for the Honeywell Lyric thermostats in Home Assistant.
 
 Once you install the custom component, navigate to Configuration-->Integrations and find "Honeywell Lyric". Once you add the integration, a configurator will pop up asking you to log into your Lyric account.
 
-Configuration
-
+### Configuration
+```yaml
 # Example configuration.yaml entry
 lyric:
   client_id: CLIENT_ID
   client_secret: CLIENT_SECRET
+```
 
+```yaml
 # Example configuration.yaml entry to show only devices at your vacation and primary homes
 lyric:
   client_id: CLIENT_ID
@@ -47,10 +49,10 @@ lyric:
   locations:
     - Vacation
     - Primary
+```
 
 Configuration variables:
 
-    client_id (Required): Your Lyric developer client id.
-    client_secret (Required): Your Lyric developer client secret.
-    locations (Optional): The location or locations you would like to include devices from. If not specified, this will include all locations in your Lyric account.
-
+- *client_id* (Required): Your Lyric developer client id.
+- *client_secret* (Required): Your Lyric developer client secret.
+- *locations* (Optional): The location or locations you would like to include devices from. If not specified, this will include all locations in your Lyric account.
