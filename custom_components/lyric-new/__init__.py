@@ -89,7 +89,7 @@ class LyricClient:
         """Init Lyric devices."""
         self.lyric = lyric
 
-        if not lyric.locations:
+        if not await lyric.locations:
             return
 
         self._location = [location.name for location in lyric.locations]
