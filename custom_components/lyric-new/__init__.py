@@ -4,6 +4,7 @@ from typing import Any, Dict
 
 import voluptuous as vol
 from lyric import Lyric
+import asyncio
 
 from homeassistant.const import CONF_TOKEN
 from homeassistant.config_entries import ConfigEntry
