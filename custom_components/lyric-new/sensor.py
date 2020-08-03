@@ -119,7 +119,7 @@ class LyricSensor(LyricDeviceEntity):
                 elif status == 'VacationHold':
                     self._state = 'Holiday'
             else:
-                await state = getattr(self.device, self.key)
+                state = getattr(self.device, self.key)
                 if self._device_class == DEVICE_CLASS_TIMESTAMP:
                     time = dt_util.parse_time(state)
                     now = dt_util.utcnow()
