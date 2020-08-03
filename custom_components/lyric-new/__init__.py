@@ -4,6 +4,7 @@ from typing import Any, Dict
 
 import voluptuous as vol
 from lyric import Lyric
+import aiohttp
 
 from homeassistant.const import CONF_TOKEN
 from homeassistant.config_entries import ConfigEntry
@@ -89,10 +90,10 @@ class LyricClient:
         """Init Lyric devices."""
         self.lyric = lyric
 
-        if not await lyric.locations:
+        if not lyric.locations:
             return
 
-        self._location = [location.name for location in lyric.locations]
+       await self._location = [location.name for location in lyric.locations]
 
     def devices(self):
         """Generate a list of thermostats and their location."""
