@@ -91,7 +91,11 @@ class LyricClient:
         self.lyric = lyric
 
         if not lyric.locations:
+<<<<<<< HEAD
            return await
+=======
+            return
+>>>>>>> parent of ede29e1... Update __init__.py
 
        await self._location = [location.name for location in lyric.locations]
 
