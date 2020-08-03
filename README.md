@@ -24,10 +24,10 @@ Note: the API has changed since last working, so if you had this installed befor
 
 This is based on four great libraries that unfortunately appear to be abandoned, buggy, and no longer work:
 
-    https://github.com/home-assistant/core/tree/92082b687a46c17a9a94a598b245728a8832b179/homeassistant/components/lyric
-    https://github.com/shellster/lyric
-    https://github.com/bramkragten/python-lyric
-    https://github.com/bramkragten/lyric
+* https://github.com/home-assistant/core/tree/92082b687a46c17a9a94a598b245728a8832b179/homeassistant/components/lyric
+* https://github.com/shellster/lyric
+* https://github.com/bramkragten/python-lyric
+* https://github.com/bramkragten/lyric
 
 This will give support for the Honeywell Lyric thermostats in Home Assistant.
 
