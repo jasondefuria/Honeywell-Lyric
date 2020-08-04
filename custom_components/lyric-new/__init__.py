@@ -88,8 +88,8 @@ class LyricClient:
         """Init Lyric devices."""
         self.lyric = lyric
 
-    async def get_location(lyric):
-        return lyric.location
+    async def location(self, lyric):
+        self.lyric = lyric
 
         if not await hass.async_add_executor_job(lambda: lyric.locations):
             return
