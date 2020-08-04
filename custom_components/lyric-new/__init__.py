@@ -91,10 +91,11 @@ class LyricClient:
     async def location(self, lyric):
         self.lyric = lyric
 
-        if not await hass.async_add_executor_job(lambda: lyric.locations):
+        if not await self.hass.async_add_executor_job(lambda: lyric.locations):
             return
 
         self._location = [location.name for location in lyric.locations]
+        return
 
     def devices(self):
         """Generate a list of thermostats and their location."""

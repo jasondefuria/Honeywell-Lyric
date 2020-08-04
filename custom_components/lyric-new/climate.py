@@ -9,7 +9,7 @@ from typing import List, Optional
 
 import voluptuous as vol
 
-from homeassistant.components.climate import ClimateDevice
+from homeassistant.components.climate import ClimateEntity
 from homeassistant.components.climate.const import (
     ATTR_TARGET_TEMP_HIGH, ATTR_TARGET_TEMP_LOW,
     HVAC_MODE_OFF, HVAC_MODE_HEAT, HVAC_MODE_COOL, HVAC_MODE_HEAT_COOL,
@@ -95,7 +95,7 @@ async def async_setup_entry(
         schema=HOLD_PERIOD_SCHEMA)
 
 
-class LyricThermostat(LyricDeviceEntity, ClimateDevice):
+class LyricThermostat(LyricDeviceEntity, ClimateEntity):
     """Representation of a Lyric thermostat."""
 
     def __init__(self, device, location, temp_unit) -> None:
