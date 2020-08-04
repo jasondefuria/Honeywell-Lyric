@@ -4,7 +4,6 @@ from typing import Any, Dict
 
 import voluptuous as vol
 from lyric import Lyric
-import asyncio
 
 from homeassistant.const import CONF_TOKEN
 from homeassistant.config_entries import ConfigEntry
@@ -82,15 +81,17 @@ async def async_unload_entry(
 
     return True
 
-
 class LyricClient:
     """Structure Lyric functions for hass."""
 
-   async def __init__(self, lyric):
+    def __init__(self, lyric):
         """Init Lyric devices."""
         self.lyric = lyric
 
-        if not await lyric.locations:
+    async def get_location(lyric):
+        return lyric.location
+
+        if not await hass.async_add_executor_job(lambda: lyric.locations):
             return
 
         self._location = [location.name for location in lyric.locations]
