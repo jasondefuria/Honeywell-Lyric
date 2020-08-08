@@ -1,5 +1,6 @@
 """Support for Honeywell Lyric devices."""
 import logging
+from datetime import timedelta
 from typing import Any, Dict
 
 import voluptuous as vol
@@ -8,6 +9,7 @@ from lyric import Lyric
 from homeassistant.const import CONF_TOKEN
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.helpers.entity import Entity
+from homeassistant.helpers.update_coordinator import DataUpdateCoordinator, UpdateFailed
 from homeassistant.helpers import config_validation as cv
 from homeassistant.helpers.typing import ConfigType, HomeAssistantType
 from .const import (DATA_LYRIC_CLIENT, DOMAIN,
@@ -15,6 +17,7 @@ from .const import (DATA_LYRIC_CLIENT, DOMAIN,
                     DATA_LYRIC_CONFIG, SERVICE_HOLD_TIME)
 
 _LOGGER = logging.getLogger(__name__)
+
 
 CONFIG_SCHEMA = vol.Schema(
     {
@@ -90,6 +93,14 @@ class LyricClient:
 
     async def location(self, lyric):
         self.lyric = lyric
+
+    coordinator = DataUpdateCoordinator(
+        hass,
+        _LOGGER,
+        name="location",
+        update_method=,
+        update_interval=timedelta(seconds=UPDATE_INTERVAL),
+    )
 
         if not await self.hass.async_add_executor_job(lambda: lyric.locations):
             return
