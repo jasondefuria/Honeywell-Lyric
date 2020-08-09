@@ -25,6 +25,7 @@ CONFIG_SCHEMA = vol.Schema(
             {
                 vol.Required(CONF_CLIENT_ID): cv.string,
                 vol.Required(CONF_CLIENT_SECRET): cv.string
+                vol.Optional(CONF_LOCATIONS): vol.All(cv.ensure_list, cv.string),
             }
         )
     },
@@ -53,12 +54,13 @@ async def async_setup_entry(
 
     client_id = conf[CONF_CLIENT_ID]
     client_secret = conf[CONF_CLIENT_SECRET]
+    CONF_LOCATIONS = conf[CONF_LOCATIONS]
     token = entry.data[CONF_TOKEN]
     token_cache_file = hass.config.path(CONF_LYRIC_CONFIG_FILE)
 
     lyric = Lyric(app_name='Home Assistant', client_id=client_id,
                   client_secret=client_secret,
-                  token=token, token_cache_file=token_cache_file)
+                  token=token, token_cache_file=token_cache_file, CONF_LOCATIONS=locations)
 
     hass.data.setdefault(DOMAIN, {})[DATA_LYRIC_CLIENT] = LyricClient(lyric)
 
@@ -84,7 +86,7 @@ async def async_unload_entry(
 
     return True
 
-class LyricClient(object):
+class LyricClient:
     """Structure Lyric functions for hass."""
 
     def __init__(self, hass, conf, lyric):

@@ -29,6 +29,7 @@ class LyricFlowHandler(ConfigFlow):
         self.client_id = None
         self.client_secret = None
         self.code = None
+        self.CONF_LOCATIONS=None
 
     async def async_step_user(self, code=None):
         """Handle a flow initiated by the user."""
@@ -42,6 +43,7 @@ class LyricFlowHandler(ConfigFlow):
 
         self.client_id = conf[CONF_CLIENT_ID]
         self.client_secret = conf[CONF_CLIENT_SECRET]
+        self.CONF_LOCATIONS = conf[CONF_Locations]
 
         return await self.async_step_auth(code)
 
@@ -64,7 +66,8 @@ class LyricFlowHandler(ConfigFlow):
                                    client_id=client_id,
                                    client_secret=client_secret,
                                    redirect_uri=redirect_uri,
-                                   token_cache_file=token_cache_file)
+                                   token_cache_file=token_cache_file,
+                                   CONF_LOCATIONS=locations)
 
                 self.hass.http.register_view(LyricAuthCallbackView())
 
@@ -91,6 +94,7 @@ class LyricFlowHandler(ConfigFlow):
                 'client_id': self.client_id,
                 'client_secret': self.client_secret,
                 'token': self.lyric.token
+                'CONF_LOCATIONS': self.CONF_LOCATIONS
             }
         )
 
