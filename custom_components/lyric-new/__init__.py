@@ -84,29 +84,22 @@ async def async_unload_entry(
 
     return True
 
-class LyricClient:
+class LyricClient(object):
     """Structure Lyric functions for hass."""
 
-    def __init__(self, lyric):
+    def __init__(self, hass, conf, lyric):
         """Init Lyric devices."""
+        self.hass = hass
         self.lyric = lyric
 
-    async def location(self, lyric):
-        self.lyric = lyric
-
-    coordinator = DataUpdateCoordinator(
-        hass,
-        _LOGGER,
-        name="location",
-        update_method=,
-        update_interval=timedelta(seconds=UPDATE_INTERVAL),
-    )
-
-        if not await self.hass.async_add_executor_job(lambda: lyric.locations):
+        if not lyric.locations:
+            _LOGGER.error("No locations found.")
             return
 
-        self._location = [location.name for location in lyric.locations]
-        return
+        if CONF_LOCATIONS not in conf:
+            self._location = [location.name for location in lyric.locations]
+        else:
+            self._location = conf[CONF_LOCATIONS]
 
     def devices(self):
         """Generate a list of thermostats and their location."""
