@@ -3,7 +3,7 @@ import logging
 from typing import Any, Dict
 
 import voluptuous as vol
-from lyric import Lyric
+from aiolyric import Lyric
 
 from homeassistant.const import CONF_TOKEN
 from homeassistant.config_entries import ConfigEntry

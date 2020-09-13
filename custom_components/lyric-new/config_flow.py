@@ -3,7 +3,7 @@ import asyncio
 import logging
 
 import async_timeout
-from lyric import Lyric
+from aiolyric import Lyric
 
 from homeassistant import config_entries
 from homeassistant.components.http import HomeAssistantView
